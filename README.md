@@ -6,24 +6,32 @@ Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecn
 
 ### Core
 
-- **React 19**: Framework JavaScript para construção de interfaces de usuário, oferecendo um sistema de componentes reutilizáveis e gerenciamento eficiente de estado.
-- **TypeScript**: Superset tipado de JavaScript que adiciona tipagem estática, melhorando a manutenibilidade e reduzindo erros em tempo de desenvolvimento.
-- **Vite**: Ferramenta de build moderna que oferece um ambiente de desenvolvimento extremamente rápido com hot module replacement.
+- **React 18.3**: Framework JavaScript para construção de interfaces de usuário, oferecendo um sistema de componentes reutilizáveis e gerenciamento eficiente de estado.
+- **TypeScript 5.7**: Superset tipado de JavaScript que adiciona tipagem estática, melhorando a manutenibilidade e reduzindo erros em tempo de desenvolvimento.
+- **Vite 6.2**: Ferramenta de build moderna que oferece um ambiente de desenvolvimento extremamente rápido com hot module replacement.
 
 ### Estilização
 
-- **Tailwind CSS**: Framework CSS utilitário que permite criar designs responsivos e personalizados sem sair do HTML, agilizando o desenvolvimento.
-- **Shadcn/UI**: Biblioteca de componentes reutilizáveis construída sobre o Radix UI e Tailwind CSS, oferecendo componentes acessíveis e altamente personalizáveis.
-- **Lucide React**: Biblioteca de ícones moderna e leve, compatível com React.
+- **Tailwind CSS 4.1**: Framework CSS utilitário que permite criar designs responsivos e personalizados sem sair do HTML, agilizando o desenvolvimento.
+- **Radix UI**: Biblioteca de componentes primitivos acessíveis e altamente personalizáveis.
+- **Lucide React 0.487**: Biblioteca de ícones moderna e leve, compatível com React.
+- **tw-animate-css**: Biblioteca para animações CSS no Tailwind.
 
-### Roteamento
+### Formulários e Validação
 
-- **React Router**: Biblioteca para gerenciamento de rotas em aplicações React, permitindo navegação SPA (Single Page Application).
+- **React Hook Form**: Biblioteca para gerenciamento de formulários com validação.
+- **Zod**: Biblioteca para validação de esquemas TypeScript.
+- **@hookform/resolvers**: Integração entre React Hook Form e Zod.
+
+### Roteamento e SEO
+
+- **React Router 7.4**: Biblioteca para gerenciamento de rotas em aplicações React.
+- **React Helmet Async**: Gerenciamento de metadados e SEO.
 
 ### Desenvolvimento
 
-- **ESLint**: Ferramenta de linting para identificar e corrigir problemas no código JavaScript/TypeScript.
-- **Prettier**: Formatador de código que garante consistência no estilo do código.
+- **ESLint 9.23**: Ferramenta de linting para identificar e corrigir problemas no código JavaScript/TypeScript.
+- **Prettier 3.5**: Formatador de código que garante consistência no estilo do código.
 - **Prettier Plugin Tailwind CSS**: Plugin que ordena automaticamente as classes do Tailwind CSS.
 
 ## 📋 Pré-requisitos
