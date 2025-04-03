@@ -1,11 +1,13 @@
 import "@/index.css";
 
-import { Button } from "@/components/ui/button";
-
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { RouterProvider } from "react-router";
+import { router } from "./routes";
 export function App() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <Button>Click me</Button>
-    </div>
+    <HelmetProvider>
+      <Helmet titleTemplate="%s | SalesTrack" />
+      <RouterProvider router={router} />
+    </HelmetProvider>
   );
 }

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>BidWeb Desafio</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 18px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="bidweb-desafio">BidWeb Desafio</h1>
+<p>Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecnologias modernas para criar uma aplicação web robusta e responsiva.</p>
+<h2 id="-tecnologias-e-bibliotecas">🚀 Tecnologias e Bibliotecas</h2>
+<h3 id="core">Core</h3>
+<ul>
+<li><strong>React 19</strong>: Framework JavaScript para construção de interfaces de usuário, oferecendo um sistema de componentes reutilizáveis e gerenciamento eficiente de estado.</li>
+<li><strong>TypeScript</strong>: Superset tipado de JavaScript que adiciona tipagem estática, melhorando a manutenibilidade e reduzindo erros em tempo de desenvolvimento.</li>
+<li><strong>Vite</strong>: Ferramenta de build moderna que oferece um ambiente de desenvolvimento extremamente rápido com hot module replacement.</li>
+</ul>
+<h3 id="estilização">Estilização</h3>
+<ul>
+<li><strong>Tailwind CSS</strong>: Framework CSS utilitário que permite criar designs responsivos e personalizados sem sair do HTML, agilizando o desenvolvimento.</li>
+<li><strong>Shadcn/UI</strong>: Biblioteca de componentes reutilizáveis construída sobre o Radix UI e Tailwind CSS, oferecendo componentes acessíveis e altamente personalizáveis.</li>
+<li><strong>Lucide React</strong>: Biblioteca de ícones moderna e leve, compatível com React.</li>
+</ul>
+<h3 id="roteamento">Roteamento</h3>
+<ul>
+<li><strong>React Router</strong>: Biblioteca para gerenciamento de rotas em aplicações React, permitindo navegação SPA (Single Page Application).</li>
+</ul>
+<h3 id="desenvolvimento">Desenvolvimento</h3>
+<ul>
+<li><strong>ESLint</strong>: Ferramenta de linting para identificar e corrigir problemas no código JavaScript/TypeScript.</li>
+<li><strong>Prettier</strong>: Formatador de código que garante consistência no estilo do código.</li>
+<li><strong>Prettier Plugin Tailwind CSS</strong>: Plugin que ordena automaticamente as classes do Tailwind CSS.</li>
+</ul>
+<h2 id="-pré-requisitos">📋 Pré-requisitos</h2>
+<ul>
+<li>Node.js (versão 18 ou superior)</li>
+<li>npm ou yarn</li>
+</ul>
+<h2 id="-instalação">🔧 Instalação</h2>
+<ol>
+<li>Clone o repositório:</li>
+</ol>
+<pre><code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/seu-usuario/bidweb-desafio.git
+<span class="hljs-built_in">cd</span> bidweb-desafio
+</code></pre>
+<ol start="2">
+<li>Instale as dependências:</li>
+</ol>
+<pre><code class="language-bash">npm install
+<span class="hljs-comment"># ou</span>
+yarn install
+</code></pre>
+<ol start="3">
+<li>Inicie o servidor de desenvolvimento:</li>
+</ol>
+<pre><code class="language-bash">npm run dev
+<span class="hljs-comment"># ou</span>
+yarn dev
+</code></pre>
+<ol start="4">
+<li>Acesse a aplicação em <code>http://localhost:5173</code></li>
+</ol>
+<h2 id="-testes-rápidos">🧪 Testes Rápidos</h2>
+<p>Para garantir que a aplicação está funcionando corretamente:</p>
+<ol>
+<li>Verifique se o servidor de desenvolvimento está rodando:</li>
+</ol>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<ol start="2">
+<li>Execute o linter para verificar a qualidade do código:</li>
+</ol>
+<pre><code class="language-bash">npm run lint
+</code></pre>
+<ol start="3">
+<li>Construa o projeto para produção:</li>
+</ol>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<ol start="4">
+<li>Visualize a versão de produção:</li>
+</ol>
+<pre><code class="language-bash">npm run preview
+</code></pre>
+<h2 id="-scripts-disponíveis">📦 Scripts Disponíveis</h2>
+<ul>
+<li><code>npm run dev</code>: Inicia o servidor de desenvolvimento</li>
+<li><code>npm run build</code>: Constrói o projeto para produção</li>
+<li><code>npm run lint</code>: Executa o linter</li>
+<li><code>npm run preview</code>: Visualiza a versão de produção</li>
+</ul>
+<h2 id="️-estrutura-do-projeto">🛠️ Estrutura do Projeto</h2>
+<pre><code>bidweb-desafio/
+├── src/
+│   ├── components/     # Componentes reutilizáveis
+│   ├── pages/         # Páginas da aplicação
+│   ├── styles/        # Estilos globais
+│   ├── App.tsx        # Componente principal
+│   └── main.tsx       # Ponto de entrada
+├── public/            # Arquivos estáticos
+├── index.html         # Template HTML
+├── vite.config.ts     # Configuração do Vite
+├── tsconfig.json      # Configuração do TypeScript
+└── package.json       # Dependências e scripts
+</code></pre>
+<h2 id="-licença">📝 Licença</h2>
+<p>Este projeto está sob a licença MIT. Veja o arquivo <a href="LICENSE">LICENSE</a> para mais detalhes.</p>
+
+            
+            
+        </body>
+        </html>
