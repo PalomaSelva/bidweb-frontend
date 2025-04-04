@@ -16,18 +16,6 @@ import {
 import colors from "tailwindcss/colors";
 
 export function PopularProductsChart() {
-  const getColorIntensity = (vendas: number, maxVendas: number) => {
-    // Calcula a intensidade baseada na proporção de vendas
-    const intensity = Math.floor((vendas / maxVendas) * 100);
-    // Mapeia a intensidade para um valor entre 100 e 800
-    const colorValues = [100, 200, 300, 400, 500, 600, 700, 800];
-    const index = Math.min(
-      Math.floor((intensity * colorValues.length) / 100),
-      colorValues.length - 1,
-    );
-    return colorValues[index].toString() as keyof typeof colors.violet;
-  };
-
   const data = [
     {
       produto: "RTX 4060 Ti",
@@ -58,6 +46,19 @@ export function PopularProductsChart() {
       vendas: 44,
     },
   ];
+
+  const getColorIntensity = (vendas: number, maxVendas: number) => {
+    // Calcula a intensidade baseada na proporção de vendas
+    const intensity = Math.floor((vendas / maxVendas) * 100);
+    // Mapeia a intensidade para um valor entre 100 e 800
+    const colorValues = [100, 200, 300, 400, 500, 600, 700, 800];
+
+    const index = Math.min(
+      Math.floor((intensity * colorValues.length) / 100),
+      colorValues.length - 1,
+    );
+    return colorValues[index].toString() as keyof typeof colors.violet;
+  };
 
   // Encontra o valor máximo de vendas
   const maxVendas = Math.max(...data.map((item) => item.vendas));
