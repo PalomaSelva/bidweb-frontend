@@ -2,44 +2,40 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const loginForm = z.object({
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, "A senha deve ter pelo menos 8 caracteres")
-    .regex(/[A-Z]/, "A senha deve conter pelo menos uma letra maiúscula")
-    .regex(/[a-z]/, "A senha deve conter pelo menos uma letra minúscula")
-    .regex(/[0-9]/, "A senha deve conter pelo menos um número")
-    .regex(/[\W_]/, "A senha deve conter pelo menos um caractere especial"),
+  email: z.string().email(""),
+  password: z.string(),
 });
 
 // Converte o tipo do zod para o tipo do TS
 type SignInFormData = z.infer<typeof loginForm>;
 
 export function LogIn() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<SignInFormData>({
+    mode: "onChange",
     resolver: zodResolver(loginForm),
+    criteriaMode: "all", // mostra todos os erros
   });
 
   async function handleLogin(data: SignInFormData) {
-    console.log(data);
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    navigate("/");
   }
+
   return (
     <>
       <Helmet title="Login" />
       <div className="p-8">
-        <div className="flex w-[350px] flex-col justify-center gap-6">
+        <div className="flex w-[370px] flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
             <p className="text-muted-foreground text-sm">
@@ -56,6 +52,7 @@ export function LogIn() {
                 type="email"
                 placeholder="exemplo@email.com"
                 {...register("email")}
+                error={errors.email}
               />
             </div>
 
@@ -67,6 +64,7 @@ export function LogIn() {
                 type="password"
                 placeholder="********"
                 {...register("password")}
+                error={errors.password}
               />
             </div>
             <Button disabled={isSubmitting} className="w-full" type="submit">
