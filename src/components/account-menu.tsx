@@ -3,13 +3,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { ChevronDown, LogOut } from "lucide-react";
-import {
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-} from "@radix-ui/react-dropdown-menu";
 
 export function AccountMenu() {
   return (
@@ -30,7 +28,7 @@ export function AccountMenu() {
             palomaselva@gmail.com
           </span>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator className="bg-muted-foreground/25 h-[1px] w-full" />
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOut size={16} />
           Sair
