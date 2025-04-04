@@ -1,13 +1,13 @@
-import { ShoppingCart } from "lucide-react";
+import { ChartNoAxesCombined } from "lucide-react";
 import image from "@/assets/sign-in.svg";
 import { Outlet } from "react-router";
 
 export function AuthLayout() {
   return (
-    <div className="grid min-h-screen grid-cols-2">
+    <div className="grid min-h-screen grid-cols-2 antialiased">
       <div className="border-foreground/5 bg-muted hidden h-full flex-col justify-between border-r p-10 md:flex">
-        <div className="text-foreground flex items-center gap-3 text-lg">
-          <ShoppingCart className="text-primary h-5 w-5" />
+        <div className="text-foreground flex items-center gap-2 text-lg">
+          <ChartNoAxesCombined size={26} className="text-primary" />
           <span className="font-semibold">SalesTrack</span>
         </div>
         <div className="flex flex-col items-center justify-center">
