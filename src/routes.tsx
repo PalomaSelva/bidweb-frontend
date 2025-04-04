@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router";
 import { Dashboard } from "./pages/app/dashboard";
-import { SignIn } from "./pages/auth/sign-in";
 import { AppLayout } from "./pages/_layouts/app";
 import { AuthLayout } from "./pages/_layouts/auth";
-import { LogIn } from "./pages/auth/log-in";
+import { SignUp } from "./pages/auth/sign-up";
+import { SignIn } from "./pages/auth/sign-in";
 
 export const router = createBrowserRouter([
   {
@@ -21,12 +21,12 @@ export const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       {
-        path: "sign-in",
-        element: <SignIn />,
+        path: "sign-up",
+        element: <SignUp />,
       },
       {
-        path: "login",
-        element: <LogIn />,
+        path: "sign-in",
+        element: <SignIn />,
       },
     ],
   },

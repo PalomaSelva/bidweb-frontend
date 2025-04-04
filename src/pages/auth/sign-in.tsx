@@ -1,60 +1,49 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
 import { Helmet } from "react-helmet-async";
+import { Link, useNavigate } from "react-router";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+
+// ...
 
 const signInForm = z.object({
   email: z.string().email(""),
-  password: z
-    .string()
-    .min(8, "A senha deve ter pelo menos 8 caracteres")
-    .refine((value) => /[A-Z]/.test(value), {
-      message: "A senha deve conter pelo menos uma letra maiúscula",
-    })
-    .refine((value) => /[a-z]/.test(value), {
-      message: "A senha deve conter pelo menos uma letra minúscula",
-    })
-    .refine((value) => /\d/.test(value), {
-      message: "A senha deve conter pelo menos um número",
-    })
-    .refine((value) => /[\W_]/.test(value), {
-      message: "A senha deve conter pelo menos um caractere especial",
-    }),
+  password: z.string().nonempty(""),
 });
 
+// Converte o tipo do zod para o tipo do TS
 type SignInFormData = z.infer<typeof signInForm>;
 
 export function SignIn() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
-    trigger,
   } = useForm<SignInFormData>({
     mode: "onChange",
     resolver: zodResolver(signInForm),
     criteriaMode: "all", // mostra todos os erros
   });
 
-  async function handleSignIn(data: SignInFormData) {
-    console.log(data, errors);
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+  async function handleSignIn() {
+    toast.success("Login realizado com sucesso");
+    navigate("/");
   }
 
   return (
     <>
-      <Helmet title="Cadastro" />
+      <Helmet title="Login" />
       <div className="p-8">
         <div className="flex w-[370px] flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">Cadastro</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
             <p className="text-muted-foreground text-sm">
-              Insira seu e-mail para criar sua conta
+              Insira seu e-mail para entrar na sua conta
             </p>
           </div>
 
@@ -80,21 +69,17 @@ export function SignIn() {
                 placeholder="********"
                 {...register("password")}
                 error={errors.password}
-                onChange={(e) => {
-                  register("password").onChange(e);
-                  trigger("password");
-                }}
               />
             </div>
             <Button disabled={isSubmitting} className="w-full" type="submit">
-              Cadastrar
+              Entrar
             </Button>
           </form>
         </div>
         <div className="mt-4 text-center text-sm">
-          Já tem uma conta?{" "}
-          <Link to="/login" className="underline underline-offset-4">
-            Faça login
+          Não tem uma conta?{" "}
+          <Link to="/sign-up" className="underline underline-offset-4">
+            Cadastre-se
           </Link>
         </div>
       </div>
