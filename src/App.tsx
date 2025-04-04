@@ -4,7 +4,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { RouterProvider } from "react-router";
 import { router } from "./routes";
 import { Toaster } from "sonner";
-import { ThemeProvider } from "./components/theme-providers";
+import { ThemeProvider } from "./components/theme/theme-providers";
 export function App() {
   return (
     <HelmetProvider>
