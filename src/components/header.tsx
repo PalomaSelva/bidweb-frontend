@@ -17,9 +17,9 @@ export function Header() {
             <Home size={20} />
             Início
           </NavLink>
-          <NavLink to="/list">
+          <NavLink to="/sales">
             <ShoppingCart size={20} />
-            Pedidos
+            Vendas
           </NavLink>
           <div className="ml-auto flex items-center gap-2">
             <ThemeToggle />
