@@ -1,13 +1,13 @@
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { Helmet } from "react-helmet-async";
+import { SalesTableRow } from "./sales-table-row";
+import { SalesTableFilters } from "./sales-table-filters";
 
 export function Sales() {
   return (
@@ -17,12 +17,7 @@ export function Sales() {
         <h1 className="text-3xl font-bold tracking-tight">Vendas</h1>
       </div>
       <div className="space-y-2.5">
-        <form>
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold">Filtros</span>
-            <Input placeholder="Nome do produto" className="h-8 w-[328px]" />
-          </div>
-        </form>
+        <SalesTableFilters />
         <div className="rounded-md border">
           <Table>
             <TableHeader>
@@ -36,15 +31,7 @@ export function Sales() {
             </TableHeader>
             <TableBody>
               {Array.from({ length: 10 }).map((_, index) => {
-                return (
-                  <TableRow key={index}>
-                    <TableCell>{index + 1}</TableCell>
-                    <TableCell>Produto {index + 1}</TableCell>
-                    <TableCell>10</TableCell>
-                    <TableCell>2024-01-01</TableCell>
-                    <TableCell>R$ 100,00</TableCell>
-                  </TableRow>
-                );
+                return <SalesTableRow key={index} />;
               })}
             </TableBody>
           </Table>
