@@ -1,8 +1,11 @@
 import { ChartNoAxesCombined } from "lucide-react";
-import image from "@/assets/sign-in.svg";
+import lightImage from "@/assets/sign-in.svg";
+import darkImage from "@/assets/sign-in-dark.svg";
 import { Outlet } from "react-router";
+import { useTheme } from "@/components/theme/theme-providers";
 
 export function AuthLayout() {
+  const { theme } = useTheme();
   return (
     <div className="grid min-h-screen grid-cols-2 antialiased">
       <div className="border-foreground/5 bg-muted hidden h-full flex-col justify-between border-r p-10 md:flex">
@@ -11,8 +14,12 @@ export function AuthLayout() {
           <span className="font-semibold">SalesTrack</span>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <img src={image} alt="" className="w-[420px]" />
-          <h2 className="mt-5 text-center text-3xl font-semibold text-gray-700">
+          <img
+            src={theme == "dark" ? darkImage : lightImage}
+            alt=""
+            className="image w-[420px]"
+          />
+          <h2 className="mt-5 text-center text-3xl font-semibold tracking-tight text-gray-800 dark:text-violet-400">
             Monitore e otimize suas vendas
           </h2>
           <p className="text-muted-foreground mt-3 max-w-[540px] text-center text-lg">
