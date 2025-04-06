@@ -6,6 +6,6 @@ interface SignInRequest {
 }
 
 export async function signIn(request: SignInRequest) {
-  const response = await api.post("/auth", request);
+  const response = await api.post("/auth/login", request);
   return response.data;
 }
