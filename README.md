@@ -16,6 +16,7 @@ Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecn
 - **Radix UI**: Biblioteca de componentes primitivos acessíveis e altamente personalizáveis.
 - **Lucide React 0.487**: Biblioteca de ícones moderna e leve, compatível com React.
 - **tw-animate-css**: Biblioteca para animações CSS no Tailwind.
+- **Recharts**: Biblioteca para criação de gráficos e visualizações de dados interativas e responsivas.
 
 ### Formulários e Validação
 
