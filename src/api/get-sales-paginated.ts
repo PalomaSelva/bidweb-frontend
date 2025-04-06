@@ -3,6 +3,7 @@ import { api } from '@/lib/axios'
 export interface GetSalesPaginatedQuery {
   page: number
   pageSize: number
+  productName?: string
 }
 
 interface GetSalesPaginatedResponse {
@@ -17,7 +18,7 @@ interface GetSalesPaginatedResponse {
 
 }
 
-export async function getSalesPaginated({ page, pageSize }: GetSalesPaginatedQuery) {
+export async function getSalesPaginated({ page, pageSize,  productName }: GetSalesPaginatedQuery) {
 
   if (!page || !pageSize) {
     throw new Error('Página e quantidade de itens por página são obrigatórios');
@@ -26,7 +27,8 @@ export async function getSalesPaginated({ page, pageSize }: GetSalesPaginatedQue
   const response = await api.get<GetSalesPaginatedResponse>('/sales', {
     params: {
       page,
-      pageSize
+      pageSize,
+      productName
     }
   });
 

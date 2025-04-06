@@ -17,10 +17,11 @@ export function Sales() {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const page = Number(searchParams.get('page')) || 1
+  const productName = searchParams.get('productName') || ''
 
   const { data: sales, isLoading } = useQuery({
-    queryKey: ['sales', page],
-    queryFn: () => getSalesPaginated({ page, pageSize: 10 }),
+    queryKey: ['sales', page, productName],
+    queryFn: () => getSalesPaginated({ page, pageSize: 10, productName }),
   });
 
   function handlePageChange(page: number) {
