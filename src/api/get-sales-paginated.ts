@@ -8,7 +8,7 @@ export interface GetSalesPaginatedQuery {
 interface GetSalesPaginatedResponse {
   items: {
     id: number
-    productName: string
+    product: string
     quantity: number
     saleDate: string
     totalValue: number

@@ -14,71 +14,42 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import colors from "tailwindcss/colors";
-
+import { useQuery } from "@tanstack/react-query";
+import { getTopProducts } from "@/api/get-top.products";
 export function PopularProductsChart() {
-  const data = [
-    {
-      produto: "RTX 4060 Ti",
-      vendas: 40,
-    },
-    {
-      produto: "Logitech G Pro X",
-      vendas: 30,
-    },
-    {
-      produto: "HyperX Cloud II",
-      vendas: 15,
-    },
-    {
-      produto: "MacBook Air M2",
-      vendas: 75,
-    },
-    {
-      produto: "Dell XPS 15",
-      vendas: 22,
-    },
-    {
-      produto: "Corsair Vengeance 32GB DDR5",
-      vendas: 54,
-    },
-    {
-      produto: "Kingston Fury Beast 16GB DDR4",
-      vendas: 44,
-    },
-  ];
+  const { data: topProducts = [] } = useQuery({
+    queryKey: ['sales', 'popular-products'],
+    queryFn: getTopProducts,
+  });
 
   const getColorIntensity = (vendas: number, maxVendas: number) => {
-    // Calcula a intensidade baseada na proporção de vendas
     const intensity = Math.floor((vendas / maxVendas) * 100);
-    // Mapeia a intensidade para um valor entre 100 e 800
     const colorValues = [100, 200, 300, 400, 500, 600, 700, 800];
 
     const index = Math.min(
       Math.floor((intensity * colorValues.length) / 100),
       colorValues.length - 1,
     );
+
     return colorValues[index].toString() as keyof typeof colors.violet;
   };
 
-  // Encontra o valor máximo de vendas
-  const maxVendas = Math.max(...data.map((item) => item.vendas));
+  const maxVendas = Math.max(...topProducts.map((item) => item.amount), 0);
 
-  // Adiciona a cor baseada na intensidade das vendas
-  const dataWithColors = data.map((item) => ({
+  const dataWithColors = topProducts.map((item) => ({
     ...item,
-    fill: colors.violet[getColorIntensity(item.vendas, maxVendas)],
+    fill: colors.violet[getColorIntensity(item.amount, maxVendas)],
   }));
 
-  // Criando chartConfig baseado nos dados recebidos
   const chartConfig = dataWithColors.reduce((acc, item) => {
-    acc[item.produto] = {
-      label: item.produto.charAt(0).toUpperCase() + item.produto.slice(1),
+    acc[item.product] = {
+      label: item.product.charAt(0).toUpperCase() + item.product.slice(1),
       color: item.fill,
     };
     return acc;
   }, {} as ChartConfig);
 
-  chartConfig.vendas = { label: "Vendas" };
+  chartConfig.amount = { label: "Vendas" };
 
   return (
     <Card className="col-span-6">
@@ -87,7 +58,7 @@ export function PopularProductsChart() {
           <CardTitle className="text-base font-medium">
             Produtos mais vendidos
           </CardTitle>
-          <CardDescription>Produtos mais vendidos no período</CardDescription>
+          <CardDescription>Produtos mais vendidos no mês atual</CardDescription>
         </div>
       </CardHeader>
       <CardContent>
@@ -101,19 +72,19 @@ export function PopularProductsChart() {
             }}
           >
             <YAxis
-              dataKey="produto"
+              dataKey="product"
               type="category"
               tickLine={false}
-              tickMargin={10}
-              width={120}
+              tickMargin={1}
+              width={60}
               axisLine={false}
             />
-            <XAxis dataKey="vendas" type="number" hide />
+            <XAxis dataKey="amount" type="number" hide />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="vendas" layout="vertical" radius={5} />
+            <Bar dataKey="amount" layout="vertical" radius={5} />
           </BarChart>
         </ChartContainer>
       </CardContent>
