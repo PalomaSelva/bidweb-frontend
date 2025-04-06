@@ -9,7 +9,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const signUpForm = z.object({
-  email: z.string().email(""),
+  name: z.string().min(1, "O nome é obrigatório"),
+  email: z.string().email("E-mail inválido"),
   password: z
     .string()
     .min(8, "A senha deve ter pelo menos 8 caracteres")
@@ -68,6 +69,17 @@ export function SignUp() {
           </div>
 
           <form className="space-y-4" onSubmit={handleSubmit(handleSignUp)}>
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="name" className="font-medium">
+                Nome
+              </Label>
+              <Input
+                type="text"
+                placeholder="John Doe"
+                {...register("name")}
+                error={errors.name}
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="email" className="font-medium">
                 E-mail

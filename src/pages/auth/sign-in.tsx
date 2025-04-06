@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "@/api/sign-in";
+import { setAuthToken } from '@/lib/auth';
 
 // ...
 
@@ -30,9 +33,19 @@ export function SignIn() {
     criteriaMode: "all", // mostra todos os erros
   });
 
-  async function handleSignIn() {
-    toast.success("Login realizado com sucesso");
-    navigate("/");
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  });
+
+  async function handleSignIn(data: SignInFormData) {
+    try {
+      const response = await authenticate(data);
+      setAuthToken(response.token);
+      toast.success("Login realizado com sucesso.");
+      navigate("/");
+    } catch (error) {
+      toast.error("Credenciais inválidas.");
+    }
   }
 
   return (
