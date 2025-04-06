@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router";
+import { Link, useNavigate, useSearchParams } from "react-router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +22,7 @@ const signInForm = z.object({
 type SignInFormData = z.infer<typeof signInForm>;
 
 export function SignIn() {
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate();
   const {
     register,
@@ -31,6 +32,9 @@ export function SignIn() {
     mode: "onChange",
     resolver: zodResolver(signInForm),
     criteriaMode: "all", // mostra todos os erros
+    defaultValues: {
+      email: searchParams.get('email') ?? '',
+    },
   });
 
   const { mutateAsync: authenticate } = useMutation({
