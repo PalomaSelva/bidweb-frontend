@@ -1,13 +1,25 @@
 import { TableRow, TableCell } from "@/components/ui/table";
+import { format } from "date-fns";
+import { formatCurrency } from '@/lib/utils';
 
-export function SalesTableRow() {
+
+export interface SalesTableRowProps {
+  sale: {
+    id: number
+    productName: string
+    quantity: number
+    saleDate: string
+    totalValue: number
+  }
+}
+export function SalesTableRow({ sale }: SalesTableRowProps) {
   return (
     <TableRow>
-      <TableCell>1</TableCell>
-      <TableCell>Produto </TableCell>
-      <TableCell>10</TableCell>
-      <TableCell>2024-01-01</TableCell>
-      <TableCell>R$ 100,00</TableCell>
+      <TableCell>{sale.id}</TableCell>
+      <TableCell>{sale.productName}</TableCell>
+      <TableCell>{sale.quantity}</TableCell>
+      <TableCell>{format(new Date(sale.saleDate), 'dd/MM/yyyy')}</TableCell>
+      <TableCell>{formatCurrency(sale.totalValue)}</TableCell>
     </TableRow>
   );
 }
