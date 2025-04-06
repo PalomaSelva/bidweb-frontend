@@ -9,8 +9,27 @@ import { Helmet } from "react-helmet-async";
 import { SalesTableRow } from "./sales-table-row";
 import { SalesTableFilters } from "./sales-table-filters";
 import { Pagination } from "@/components/pagination";
+import { getSalesPaginated } from "@/api/get-sales-paginated";
+import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "react-router";
 
 export function Sales() {
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const page = Number(searchParams.get('page')) || 1
+
+  const { data: sales, isLoading } = useQuery({
+    queryKey: ['sales', page],
+    queryFn: () => getSalesPaginated({ page, pageSize: 10 }),
+  });
+
+  function handlePageChange(page: number) {
+    setSearchParams((state) => {
+      state.set('page', (page).toString())
+      return state
+    })
+  }
+
   return (
     <>
       <Helmet title="Vendas" />
@@ -31,13 +50,22 @@ export function Sales() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {Array.from({ length: 10 }).map((_, index) => {
-                  return <SalesTableRow key={index} />;
+                {sales && sales.items.map((sale) => {
+                  return <SalesTableRow key={sale.id} sale={sale} />;
                 })}
               </TableBody>
             </Table>
           </div>
-          <Pagination pageIndex={0} totalCount={115} perPage={10} />
+          {
+            sales && (
+              <Pagination
+                page={page}
+                totalCount={sales?.totalCount || 0}
+                perPage={10}
+                onPageChange={handlePageChange}
+              />
+            )
+          }
         </div>
       </div>
     </>
