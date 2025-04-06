@@ -1,4 +1,4 @@
-const TOKEN_KEY = '@salestrack:token';
+const TOKEN_KEY = 'token';
 
 interface UserTokenPayload {
   iss: string;
