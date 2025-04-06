@@ -1,7 +1,9 @@
+import { signUp } from "@/api/sign-up";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
+import { useMutation } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
@@ -43,17 +45,23 @@ export function SignUp() {
     criteriaMode: "all", // mostra todos os erros
   });
 
+
+  const { mutateAsync: registerUser } = useMutation({
+    mutationFn: signUp,
+  })
+
   async function handleSignUp(data: SignUpFormData) {
-    console.log(data, errors);
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    toast.success("Usuário cadastrado com sucesso!", {
-      action: {
-        label: "Login",
-        onClick: () => navigate("/sign-in"),
-      },
-    });
+    try {
+      await signUp(data)
+      toast.success("Usuário cadastrado com sucesso!", {
+        action: {
+          label: "Login",
+          onClick: () => navigate(`/sign-in?email=${data.email}`),
+        },
+      });
+    } catch (error) {
+      toast.error("Erro ao cadastrar usuário.")
+    }
   }
 
   return (
