@@ -20,6 +20,7 @@ export function PopularProductsChart() {
   const { data: topProducts = [] } = useQuery({
     queryKey: ['sales', 'popular-products'],
     queryFn: getTopProducts,
+     retry: 1,
   });
 
   const getColorIntensity = (vendas: number, maxVendas: number) => {
