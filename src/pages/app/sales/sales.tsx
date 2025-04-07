@@ -12,6 +12,7 @@ import { Pagination } from "@/components/pagination";
 import { getSalesPaginated } from "@/api/get-sales-paginated";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router";
+import { SalesTableSkeleton } from "./sales-table-skeleton";
 
 export function Sales() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -57,6 +58,7 @@ export function Sales() {
               </TableBody>
             </Table>
           </div>
+          {isLoading && <SalesTableSkeleton />}
           {
             sales && (
               <Pagination

@@ -17,7 +17,7 @@ export function SalesTableFilters() {
 
   const productName = searchParams.get('productName')
 
-  const { register, handleSubmit, control, reset } =
+  const { register, handleSubmit, reset } =
     useForm<SalesTableFiltersSchema>({
       resolver: zodResolver(SalesTableFiltersSchema),
       defaultValues: {
@@ -57,9 +57,9 @@ export function SalesTableFilters() {
 
   return (
     <form onSubmit={handleSubmit(handleFilter)}>
-      <div className="flex items-center gap-2">
-        <span className="text-sm font-semibold">Filtros:</span>
-        <Input placeholder="Nome do produto" className="h-8 w-[328px]" {...register('productName')} />
+      <div className="flex md:flex-row flex-col mditems-center gap-2">
+        <span className="text-sm font-semibold text-left">Filtros:</span>
+        <Input placeholder="Nome do produto" className="h-8 md:w-[328px] w-full" {...register('productName')} />
         <Button
           type="submit"
           variant="secondary"
