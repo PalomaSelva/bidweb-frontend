@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
 import { useMutation } from "@tanstack/react-query";
+import { isAxiosError } from "axios";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
@@ -52,7 +53,7 @@ export function SignUp() {
 
   async function handleSignUp(data: SignUpFormData) {
     try {
-      await signUp(data)
+      await registerUser(data)
       toast.success("Usuário cadastrado com sucesso!", {
         action: {
           label: "Login",
@@ -60,7 +61,11 @@ export function SignUp() {
         },
       });
     } catch (error) {
-      toast.error("Erro ao cadastrar usuário.")
+      if (isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Erro ao cadastrar usuário.')
+      } else {
+        toast.error('Erro inesperado.')
+      }
     }
   }
 
