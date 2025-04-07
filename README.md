@@ -37,7 +37,7 @@ Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecn
 
 ## 📋 Pré-requisitos
 
-- Node.js (versão 18 ou superior)
+- Node.js (versão 20 ou superior)
 - npm ou yarn
 
 ## 🔧 Instalação
@@ -45,7 +45,7 @@ Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecn
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/bidweb-desafio.git
+git clone https://github.com/PalomaSelva/bidweb-frontend
 cd bidweb-desafio
 ```
 
