@@ -46,7 +46,6 @@ Este projeto foi desenvolvido como parte de um desafio técnico, utilizando tecn
 
 ```bash
 git clone https://github.com/PalomaSelva/bidweb-frontend
-cd bidweb-desafio
 ```
 
 2. Instale as dependências:
