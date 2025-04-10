@@ -3,6 +3,7 @@ import { api } from "@/lib/axios";
 import { isAxiosError } from "axios";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 export function AppLayout() {
   const navigate = useNavigate()
@@ -14,11 +15,14 @@ export function AppLayout() {
         if (isAxiosError(error)) {
           const status = error.response?.status
           const code = error.response?.data.code
-
-          if (status === 401 && code === 'UNAUTHORIZED') {
-            navigate('/sign-in', { replace: true })
+          console.log(status, code)
+          if (
+            (status === 401 ) ||
+            (status === 403 )
+          ) {
+            navigate("/sign-in", { replace: true });
           } else {
-            throw error
+            toast.error(error.response?.data.message);
           }
         }
       },

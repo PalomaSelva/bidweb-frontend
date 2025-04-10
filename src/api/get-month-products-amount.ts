@@ -1,14 +1,14 @@
-import { api } from '@/lib/axios'
+import { api } from "@/lib/axios";
 
 export interface GetMonthSalesAmountResponse {
-  amount: number
-  diffFromLastMonth: number
+  amount: number;
+  diffFromLastMonth: number;
 }
 
 export async function getMonthSalesAmount() {
   const response = await api.get<GetMonthSalesAmountResponse>(
-    '/sales/month-products-sold',
-  )
+    "/sales/month-products",
+  );
 
-  return response.data
+  return response.data;
 }

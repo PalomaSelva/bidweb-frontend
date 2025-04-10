@@ -17,18 +17,16 @@ import {
 import { getDailyRevenueInPeriod } from "@/api/get-daily-revenue-in-period";
 import { useQuery } from "@tanstack/react-query";
 import { subDays } from "date-fns";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { DateRange } from "react-day-picker";
 import { DateRangePicker } from '@/components/ui/date-range-picker'
-import { toast } from "sonner";
-import { isAxiosError } from "axios";
 export function RevenueChart() {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: subDays(new Date(), 7),
     to: new Date(),
   })
 
- const { data: dailyRevenueInPeriod, error } = useQuery({
+ const { data: dailyRevenueInPeriod,  } = useQuery({
     queryKey: ['metrics', 'daily-revenue-in-period', dateRange],
     queryFn: () => getDailyRevenueInPeriod({
       from: dateRange?.from,
@@ -37,16 +35,6 @@ export function RevenueChart() {
     retry: 1,
   });
 
-  // Observa mudanças no erro
-  useEffect(() => {
-    if (error) {
-      if (isAxiosError(error)) {
-        toast.error(error.response?.data?.message || 'Erro ao buscar dados.')
-      } else {
-        toast.error('Erro inesperado.')
-      }
-    }
-  }, [error]);
 
   const chartData = useMemo(() => {
     return dailyRevenueInPeriod?.map((chartItem) => {

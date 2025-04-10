@@ -1,4 +1,4 @@
-import { getMonthSalesAmount } from "@/api/get-month-sales-amount";
+import { getMonthSalesAmount } from "@/api/get-month-products-amount";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { DollarSign } from "lucide-react";
