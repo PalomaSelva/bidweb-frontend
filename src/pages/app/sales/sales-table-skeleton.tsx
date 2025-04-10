@@ -7,23 +7,21 @@ export function SalesTableSkeleton() {
     return (
       <TableRow key={i}>
         <TableCell>
-          <Skeleton className="h-4 w-[172px]" />
+          <Skeleton className="h-4 w-[40px] lg:w-[72px]" />
         </TableCell>
         <TableCell>
-          <Skeleton className="h-4 w-[148px]" />
+          <Skeleton className="h-4 w-[50px] md:w-[100px] lg:w-[548px]" />
         </TableCell>
         <TableCell>
-          <Skeleton className="h-4 w-[110px]" />
+          <Skeleton className="h-4 w-[80px] md:w-[100px] lg:w-[510px]" />
         </TableCell>
         <TableCell>
-          <Skeleton className="h-4 w-[200px]" />
+          <Skeleton className="h-4 w-[80px] md:w-[200px] lg:w-[600px]" />
         </TableCell>
         <TableCell>
-          <Skeleton className="h-4 w-[200px]" />
+          <Skeleton className="h-4 w-[90px] md:w-[200px] lg:w-[600px]" />
         </TableCell>
-        <TableCell>
-          <Skeleton className="h-4 w-[200px]" />
-        </TableCell>
+      
     
       </TableRow>
     )

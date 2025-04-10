@@ -1,11 +1,10 @@
-const TOKEN_KEY = 'token';
+const TOKEN_KEY = "token";
 
 interface UserTokenPayload {
   iss: string;
   exp: number;
   sub: string;
   userId: string;
-
 }
 
 export function getAuthToken(): string | null {
@@ -26,14 +25,11 @@ export function hasAuthToken(): boolean {
 
 export function decodeToken(): UserTokenPayload | null {
   const token = getAuthToken();
-  
+
   if (!token) return null;
-  
+
   try {
-    // O token JWT é dividido em 3 partes por pontos
-    // A segunda parte contém os dados (payload)
-    const [, payload] = token.split('.');
-    // Decodifica o base64 e converte para objeto
+    const [, payload] = token.split(".");
     const decodedPayload = JSON.parse(atob(payload));
     return decodedPayload;
   } catch {
