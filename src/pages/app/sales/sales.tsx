@@ -23,6 +23,7 @@ export function Sales() {
   const { data: sales, isLoading } = useQuery({
     queryKey: ['sales', page, productName],
     queryFn: () => getSalesPaginated({ page, pageSize: 10, productName }),
+      retry: 1,
   });
 
   function handlePageChange(page: number) {

@@ -8,6 +8,7 @@ export function MonthRevenueCard() {
   const { data: monthRevenue } = useQuery({
     queryKey: ['month-revenue'],
     queryFn: getMonthRevenue,
+    retry: 1,
   })
   return (
     <Card className="gap-0.5">

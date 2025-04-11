@@ -8,6 +8,7 @@ export function MonthSalesAmountCard() {
   const { data: monthSalesAmount } = useQuery({
     queryKey: ['month-sales-amount'],
     queryFn: getMonthSalesAmount,
+    retry: 1,
   })
 
   return (

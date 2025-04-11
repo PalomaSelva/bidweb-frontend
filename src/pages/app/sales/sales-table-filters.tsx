@@ -27,8 +27,6 @@ export function SalesTableFilters() {
 
   function handleFilter({ productName }: SalesTableFiltersSchema) {
     setSearchParams((state) => {
-
-
       if (productName) {
         state.set('productName', productName)
       } else {

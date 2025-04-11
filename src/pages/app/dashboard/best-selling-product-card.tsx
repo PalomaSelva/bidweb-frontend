@@ -8,6 +8,7 @@ export function BestSellingProductCard() {
   const { data: topProducts = [] } = useQuery({
     queryKey: ['sales', 'popular-products'],
     queryFn: getTopProducts,
+    retry: 1,
   });
   return (
     <Card className="gap-0.5">
